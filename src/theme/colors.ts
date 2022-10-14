@@ -1,0 +1,11 @@
+export const COLORS = {
+  TITLE_HEAD: '#333333',
+  TEXT: '#2D2D2D',
+  BACKGROUND: '#FFFFFF',
+
+  ORANGE: '#F2994A',
+  ORANGE_LIGHT: '#F1A10A',
+
+  GRAY: '#BDBDBD',
+  GRAY_LIGHT: '#E0E0E0',
+} as const

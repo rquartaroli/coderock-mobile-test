@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { StatusBar } from 'react-native';
 import { 
   useFonts,
   Rubik_400Regular,
@@ -10,6 +10,7 @@ import { Roboto_500Medium } from '@expo-google-fonts/roboto';
 import { ThemeProvider } from 'styled-components/native';
 
 import { THEME } from './src/theme';
+import { Posts } from './src/screens/Posts';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -25,9 +26,12 @@ export default function App() {
 
   return (
     <ThemeProvider theme={THEME}>
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Hello World!</Text>
-      </View>
+      <StatusBar 
+        barStyle="dark-content"
+        backgroundColor="transparent"
+        translucent
+      />
+      <Posts />
     </ThemeProvider>
   );
 }

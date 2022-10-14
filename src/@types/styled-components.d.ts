@@ -1,11 +1,15 @@
+import { theme } from '../styles/theme'
+
 type Theme = {
   COLORS: {
     TITLE_HEAD: string,
     TEXT: string,
     BACKGROUND: string,
+    LINE_BORDER: string,
     ORANGE: string,
     ORANGE_LIGHT: string,
     GRAY: string,
+    GRAY_LIGHT: string,
   },
   FONTS: {
     FONT_FAMILY: {

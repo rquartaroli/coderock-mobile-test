@@ -5,6 +5,7 @@ type Theme = {
     TITLE_HEAD: string,
     TEXT: string,
     BACKGROUND: string,
+    BACKGROUND_GRAY: string,
     LINE_BORDER: string,
     ORANGE: string,
     ORANGE_LIGHT: string,

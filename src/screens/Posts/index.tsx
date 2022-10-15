@@ -1,6 +1,6 @@
 import React from 'react';
 import { Header } from '../../components/Header';
-import { Stars } from '../../components/Stars';
+import { PostCard } from '../../components/PostCard';
 
 import * as S from './styles';
 
@@ -12,7 +12,8 @@ export function Posts() {
         title="Posts"
         actionButton={() => console.log('vai executar a ação do botão')}
       />
-      <Stars />
+      <PostCard />
+      <PostCard variant="imgRightSide" />
     </S.Container>
   );
 }

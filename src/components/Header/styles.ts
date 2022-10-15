@@ -17,6 +17,7 @@ export const Container = styled.View<ContainerProps>`
    flex-direction: row;
    justify-content: space-between;
    align-items: center;
+   z-index: 2;
    
    ${backGroundColor === 'gray'
     ?

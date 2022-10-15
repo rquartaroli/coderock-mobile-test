@@ -20,12 +20,12 @@ type Theme = {
       MEDIUM_ROBOTO: 'Roboto_500Medium',
     },
     FONT_SIZES: {
-      XXSMALL: 22,
-      XSMALL: 24,
-      SMALL: 27,
-      MEDIUM: 30,
-      LARGE: 36,
-      XLARGE: 40,
+      XXSMALL: 14,
+      XSMALL: 16,
+      SMALL: 18,
+      MEDIUM: 24,
+      LARGE: 28,
+      XLARGE: 32,
     }
   }
 }

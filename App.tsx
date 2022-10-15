@@ -10,7 +10,7 @@ import { Roboto_500Medium } from '@expo-google-fonts/roboto';
 import { ThemeProvider } from 'styled-components/native';
 
 import { THEME } from './src/theme';
-import { Posts } from './src/screens/Posts';
+import { Routes } from './src/routes';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +31,7 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Posts />
+      <Routes />
     </ThemeProvider>
   );
 }

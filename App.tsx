@@ -11,6 +11,7 @@ import { ThemeProvider } from 'styled-components/native';
 
 import { THEME } from './src/theme';
 import { Routes } from './src/routes';
+import { PostsContextProvider } from './src/hooks/postsContext';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -31,7 +32,9 @@ export default function App() {
         backgroundColor="transparent"
         translucent
       />
-      <Routes />
+      <PostsContextProvider>
+        <Routes />
+      </PostsContextProvider>
     </ThemeProvider>
   );
 }

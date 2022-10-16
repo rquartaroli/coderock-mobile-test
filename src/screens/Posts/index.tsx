@@ -1,31 +1,24 @@
 import React from 'react';
-import { Header } from '../../components/Header';
-import { PostCard } from '../../components/PostCard';
+import { FlatList } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
 import * as S from './styles';
-import { Tabbar } from '../../components/Tabbar';
-import { FlatList } from 'react-native';
 
-const arrayQ = [
-  {
-    id: '1',
-    title: 'a'
-  },
-  {
-    id: '2',
-    title: 'b'
-  },
-  {
-    id: '3',
-    title: 'c'
-  },
-  {
-    id: '4',
-    title: 'd'
-  }
-]
+import { usePostsContext } from '../../hooks/postsContext';
+import { PostCard } from '../../components/PostCard';
+import { Header } from '../../components/Header';
+import { Tabbar } from '../../components/Tabbar';
+import { PostsDTO } from '../../DTOs/postsDTO';
 
 export function Posts() {
+  const { posts } = usePostsContext();
+
+  const navigation = useNavigation();
+
+  function handleOpenArticle(post: PostsDTO) {
+    navigation.navigate('Post', { post });
+  }
+
   return (
     <S.Container>
       <Header 
@@ -35,10 +28,26 @@ export function Posts() {
       />
 
       <FlatList 
-        data={arrayQ}
+        data={posts}
         keyExtractor={item => item.id}
-        renderItem={({ index }) => index % 2 === 0 ? <PostCard /> : <PostCard variant="imgRightSide" />}
-        showsVerticalScrollIndicator={false}
+        renderItem={({ item, index }) => index % 2 === 0 
+          ? <PostCard 
+              author={item.author}
+              title={item.title}
+              article={item.article}
+              imageUrl={item.imageUrl}
+              onPressAction={() => handleOpenArticle(item)}
+            /> 
+          : <PostCard 
+              author={item.author}
+              title={item.title}
+              article={item.article}
+              imageUrl={item.imageUrl}
+              variant="imgRightSide" 
+              onPressAction={() => handleOpenArticle(item)}
+            />
+          }
+        // showsVerticalScrollIndicator={false}
       />
 
       <Tabbar />

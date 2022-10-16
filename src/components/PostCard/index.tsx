@@ -5,21 +5,34 @@ import { Stars } from '../Stars';
 import * as S from './styles';
 
 type PostCardProps = {
+  author: string
+  title: string
+  article: string
+  imageUrl: string
   variant?: 'imgLeftSide' | 'imgRightSide'
+  onPressAction: () => void
 }
 
-export function PostCard({ variant = 'imgLeftSide' }: PostCardProps) {
+export function PostCard({ 
+  author,
+  title,
+  article,
+  imageUrl,
+  variant = 'imgLeftSide',
+  onPressAction
+}: PostCardProps) {
+
   if(variant === 'imgLeftSide') {
     return (
-      <S.Container>
+      <S.Container onPress={onPressAction}>
         <S.ImagePost 
-          source={{ uri: "https://source.unsplash.com/640x640/?trees" }} 
+          source={{ uri: imageUrl }} 
         />
         <S.ContentPost>
           <View>
-            <S.Author>Rafael Quartaroli</S.Author>
-            <S.TitlePost>Bora terminar esse teste aqui</S.TitlePost>
-            <S.ArticlePost>skldfjnmklwsjfs apdjkopajkdfap sdfhiwjfpwej</S.ArticlePost>
+            <S.Author>{author}</S.Author>
+            <S.TitlePost numberOfLines={2}>{title}</S.TitlePost>
+            <S.ArticlePost numberOfLines={3}>{article}</S.ArticlePost>
           </View>
           <Stars />
         </S.ContentPost>
@@ -27,17 +40,17 @@ export function PostCard({ variant = 'imgLeftSide' }: PostCardProps) {
     );
   } else {
     return (
-      <S.Container isRightSide={true}>
+      <S.Container onPress={onPressAction} isRightSide={true}>
         <S.ContentPost>
           <View>
-            <S.Author>Rafael Quartaroli</S.Author>
-            <S.TitlePost>Bora terminar esse teste aqui</S.TitlePost>
-            <S.ArticlePost>skldfjnmklwsjfs apdjkopajkdfap sdfhiwjfpwej</S.ArticlePost>
+            <S.Author>{author}</S.Author>
+            <S.TitlePost numberOfLines={2}>{title}</S.TitlePost>
+            <S.ArticlePost numberOfLines={3}>{article}</S.ArticlePost>
           </View>
           <Stars />
         </S.ContentPost>
         <S.ImagePost 
-          source={{ uri: "https://source.unsplash.com/640x640/?trees" }} 
+          source={{ uri: imageUrl }} 
         />
       </S.Container>
     );

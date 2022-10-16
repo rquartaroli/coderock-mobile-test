@@ -9,5 +9,5 @@ export const Container = styled.View`
 `;
 
 export const Content = styled.ScrollView`
-  margin: ${RFValue(28)}px ${RFValue(40)}px;
+  margin: ${RFValue(0)}px ${RFValue(40)}px;
 `

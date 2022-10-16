@@ -5,7 +5,7 @@ type ContainerProps = {
   isRightSide?: boolean
 }
 
-export const Container = styled.View<ContainerProps>`
+export const Container = styled.TouchableOpacity<ContainerProps>`
  ${({ theme, isRightSide }) => css`
    width: 100%;
    height: ${RFValue(200)}px;

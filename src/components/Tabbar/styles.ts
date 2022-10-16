@@ -50,4 +50,5 @@ export const WrapperButtonModal = styled.View`
   width: 100%;
   justify-content: center;
   align-items: center;
+  margin-top: ${RFValue(28)}px;
 `

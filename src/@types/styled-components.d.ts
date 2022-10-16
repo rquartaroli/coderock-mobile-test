@@ -11,6 +11,8 @@ type Theme = {
     ORANGE_LIGHT: string,
     GRAY: string,
     GRAY_LIGHT: string,
+    PLACEHOLDER_INPUT: string,
+    OVERLAY_MODAL: string,
   },
   FONTS: {
     FONT_FAMILY: {

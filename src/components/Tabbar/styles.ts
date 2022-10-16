@@ -45,3 +45,9 @@ export const ImageIcon = styled.Image<ActiveProps>`
     }
  `}
 `
+
+export const WrapperButtonModal = styled.View`
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`

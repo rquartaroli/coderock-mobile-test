@@ -3,6 +3,7 @@ import { RFValue } from 'react-native-responsive-fontsize';
 
 type ContainerProps = {
   backGroundColor?: 'gray' | 'white'
+  inModal?: boolean
 }
 
 type WrapperLeftProps = {
@@ -10,10 +11,19 @@ type WrapperLeftProps = {
 }
 
 export const Container = styled.View<ContainerProps>`
- ${({ theme, backGroundColor }) => css`
+ ${({ theme, backGroundColor, inModal = false }) => css`
    width: 100%;
-   height: ${RFValue(100)}px;
-   padding-top: ${RFValue(20)}px;
+   ${inModal
+    ?
+    css`
+      height: ${RFValue(80)}px;
+    `
+    :
+    css`
+      height: ${RFValue(100)}px;
+      padding-top: ${RFValue(20)}px;
+    `
+    }
    flex-direction: row;
    justify-content: space-between;
    align-items: center;

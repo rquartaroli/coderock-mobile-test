@@ -10,4 +10,7 @@ export const COLORS = {
 
   GRAY: '#BDBDBD',
   GRAY_LIGHT: '#E0E0E0',
+
+  PLACEHOLDER_INPUT: 'rgba(79, 79, 79, 0.83)',
+  OVERLAY_MODAL: 'rgba(196, 196, 196, 0.72)',
 } as const

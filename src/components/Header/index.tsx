@@ -11,17 +11,19 @@ type HeaderProps ={
   title: string
   actionButton: () => void
   backGroundColor?: 'gray' | 'white'
+  inModal?: boolean
 }
 
 export function Header({ 
   variant,
   title,
   actionButton,
-  backGroundColor = 'gray'
+  backGroundColor = 'gray',
+  inModal = false
 }: HeaderProps) {
   const THEME = useTheme();
   return (
-    <S.Container backGroundColor={backGroundColor}>
+    <S.Container backGroundColor={backGroundColor} inModal={inModal}>
       <S.WrapperLeft isGoBackLeft={variant === 'withGoBack' ? true : false}>
         {variant === 'withGoBack'
          &&

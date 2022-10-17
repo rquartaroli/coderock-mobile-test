@@ -5,6 +5,7 @@ export declare global {
     interface RootParamList {
       Posts: undefined;
       Post: { post: PostsDTO };
+      CreatePost: undefined;
     }
   }
 }

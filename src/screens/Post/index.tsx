@@ -50,7 +50,7 @@ export function Post() {
             </S.InfoAuthor>
           </S.WrapperAuthor>
 
-          <Stars />
+          <Stars idPost={post.post.id} starsAmount={post.post.stars ? post.post.stars : 0 } />
 
           <S.Article>
             {post.post.article}

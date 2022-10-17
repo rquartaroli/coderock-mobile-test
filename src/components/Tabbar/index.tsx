@@ -12,6 +12,7 @@ import { ModalContact } from '../ModalContact';
 import { FormData, Input } from '../Input';
 import { ButtonIcon } from '../ButtonIcon';
 import { useForm } from 'react-hook-form';
+import { useNavigation } from '@react-navigation/native';
 
 const schema = Yup.object().shape({
   name: Yup.string().matches(/(\w.+\s).+/, 'Enter at least 2 names').required('Full name is required'),
@@ -25,6 +26,8 @@ export function Tabbar() {
   const [iconPostActive, setIconPostActive] = useState(true);
   const [iconContactActive, setIconContactActive] = useState(false);
   const [modalOpen, setModalOpen] = useState(false);
+
+  const navigation = useNavigation();
 
   const { 
     control,
@@ -68,35 +71,39 @@ export function Tabbar() {
     return Linking.openURL(url);
   }
 
-  function handleActiveButtons() {
-    setIconPostActive(!iconPostActive)
-    setIconContactActive(!iconContactActive)
-    if(iconContactActive) {
-      console.log('volta para os Posts')
-    }
-    if(iconPostActive) {
-      setModalOpen(true)
-      StatusBar.setBackgroundColor('white')
-    }
+  function handleGoPosts() {
+    setIconPostActive(true)
+    setIconContactActive(false)
+    navigation.reset({
+      index: 0,
+      routes: [{ name: 'Posts' }]
+    })
+  }
+
+  function handleOpenModal() {
+    setIconPostActive(false)
+    setIconContactActive(true)
+    setModalOpen(true)
+    StatusBar.setBackgroundColor('white')
   }
 
   function handleCloseModal() {
     reset();
-    setIconPostActive(!iconPostActive)
-    setIconContactActive(!iconContactActive)
-    setModalOpen(!modalOpen)
+    setIconPostActive(true)
+    setIconContactActive(false)
+    setModalOpen(false)
     StatusBar.setBackgroundColor('transparent')
   }
 
   return (
     <S.Container>
-      <S.ButtonTab isActive={iconPostActive} onPress={handleActiveButtons}>
+      <S.ButtonTab isActive={iconPostActive} onPress={handleGoPosts}>
         <S.ImageIcon 
           source={iconPosts} 
           isActive={iconPostActive} 
         />
       </S.ButtonTab>
-      <S.ButtonTab isActive={iconContactActive} onPress={handleActiveButtons}>
+      <S.ButtonTab isActive={iconContactActive} onPress={handleOpenModal}>
         <S.ImageIcon 
           source={iconContact} 
           isActive={iconContactActive} 

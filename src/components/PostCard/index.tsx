@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { View } from 'react-native';
 import { Stars } from '../Stars';
 
@@ -11,15 +11,19 @@ type PostCardProps = {
   imageUrl: string
   variant?: 'imgLeftSide' | 'imgRightSide'
   onPressAction: () => void
+  starsAmount: number
+  idPost: string
 }
 
-export function PostCard({ 
+function PostCardItem({ 
   author,
   title,
   article,
   imageUrl,
   variant = 'imgLeftSide',
-  onPressAction
+  onPressAction,
+  starsAmount,
+  idPost
 }: PostCardProps) {
 
   if(variant === 'imgLeftSide') {
@@ -34,7 +38,7 @@ export function PostCard({
             <S.TitlePost numberOfLines={2}>{title}</S.TitlePost>
             <S.ArticlePost numberOfLines={3}>{article}</S.ArticlePost>
           </View>
-          <Stars />
+          <Stars idPost={idPost} starsAmount={starsAmount} />
         </S.ContentPost>
       </S.Container>
     );
@@ -47,7 +51,7 @@ export function PostCard({
             <S.TitlePost numberOfLines={2}>{title}</S.TitlePost>
             <S.ArticlePost numberOfLines={3}>{article}</S.ArticlePost>
           </View>
-          <Stars />
+          <Stars idPost={idPost} starsAmount={starsAmount} />
         </S.ContentPost>
         <S.ImagePost 
           source={{ uri: imageUrl }} 
@@ -57,3 +61,5 @@ export function PostCard({
   }
   
 }
+
+export const PostCard = memo(PostCardItem);

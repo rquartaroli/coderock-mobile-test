@@ -1,12 +1,22 @@
 import { RFValue } from 'react-native-responsive-fontsize';
 import styled, { css } from 'styled-components/native';
 
-export const InputField = styled.TextInput`
- ${({ theme }) => css`
+type InputFieldProps = {
+  isError: boolean
+}
+
+export const InputField = styled.TextInput<InputFieldProps>`
+ ${({ theme, isError = false }) => css`
     width: 100%;
     padding: ${RFValue(8)}px ${RFValue(12)}px;
     background-color: ${theme.COLORS.BACKGROUND};
-    border: 2px solid ${theme.COLORS.ORANGE};
+    ${isError
+    ?
+      css`border: 2px solid ${theme.COLORS.ALERT};` 
+    :
+      css`border: 2px solid ${theme.COLORS.ORANGE};`
+    }
+    
  `}
 `;
 
@@ -24,6 +34,6 @@ export const ErrorMsg = styled.Text`
   ${({ theme }) => css`
     font-family: ${theme.FONTS.FONT_FAMILY.MEDIUM};
     font-size: ${theme.FONTS.FONT_SIZES.XXSMALL}px;
-    color: ${theme.COLORS.PLACEHOLDER_INPUT};
+    color: ${theme.COLORS.ALERT};
  `}
 `

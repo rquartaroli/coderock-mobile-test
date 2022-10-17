@@ -7,6 +7,7 @@ export const ButtonPress = styled.TouchableOpacity`
   justify-content: center;
   align-items: center;
   padding: ${RFValue(14)}px ${RFValue(28)}px;
+  border-radius: 4px;
 `;
 
 export const ImageIcon = styled.Image`

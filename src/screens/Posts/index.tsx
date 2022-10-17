@@ -9,9 +9,10 @@ import { PostCard } from '../../components/PostCard';
 import { Header } from '../../components/Header';
 import { Tabbar } from '../../components/Tabbar';
 import { PostsDTO } from '../../DTOs/postsDTO';
+import { Loading } from '../../components/Loading';
 
 export function Posts() {
-  const { posts } = usePostsContext();
+  const { posts, isLoading } = usePostsContext();
 
   const navigation = useNavigation();
 
@@ -19,16 +20,25 @@ export function Posts() {
     navigation.navigate('Post', { post });
   }
 
+  function handleOpenCreatePost() {
+    navigation.navigate('CreatePost');
+  }
+
+  if(isLoading) {
+    return <Loading />
+  }
+
   return (
     <S.Container>
       <Header 
         variant="withAddButton" 
         title="Posts"
-        actionButton={() => console.log('vai executar a ação do botão')}
+        actionButton={handleOpenCreatePost}
       />
 
       <FlatList 
         data={posts}
+        extraData={posts}
         keyExtractor={item => item.id}
         renderItem={({ item, index }) => index % 2 === 0 
           ? <PostCard 
@@ -37,6 +47,8 @@ export function Posts() {
               article={item.article}
               imageUrl={item.imageUrl}
               onPressAction={() => handleOpenArticle(item)}
+              starsAmount={item.stars ? item.stars : 0}
+              idPost={item.id}
             /> 
           : <PostCard 
               author={item.author}
@@ -45,9 +57,10 @@ export function Posts() {
               imageUrl={item.imageUrl}
               variant="imgRightSide" 
               onPressAction={() => handleOpenArticle(item)}
+              starsAmount={item.stars ? item.stars : 0}
+              idPost={item.id}
             />
           }
-        // showsVerticalScrollIndicator={false}
       />
 
       <Tabbar />

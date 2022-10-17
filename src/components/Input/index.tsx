@@ -10,11 +10,15 @@ export type FormData = {
   email: string
   phone: string
   message: string
+  title: string
+  author: string
+  imageUrl: string
+  post: string
 }
 
 type InputProps = TextInputProps & {
   control: Control<FormData>
-  name: "name" | "message" | "email" | "phone"
+  name: "name" | "message" | "email" | "phone" | "title" | "author" | "imageUrl" | "post"
   title: string
   error?: string
   isRef?: React.Ref<TextInput> | undefined
@@ -36,6 +40,7 @@ export function Input({ control, name, title, error, isRef, ...rest }: InputProp
             onChangeText={onChange}
             value={value}
             ref={isRef}
+            isError={error ? true : false}
             {...rest}
           />
         )}

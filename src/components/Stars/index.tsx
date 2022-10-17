@@ -4,16 +4,26 @@ import { RFValue } from 'react-native-responsive-fontsize';
 import { MaterialIcons } from '@expo/vector-icons';
 
 import * as S from './styles';
+import { usePostsContext } from '../../hooks/postsContext';
 
-export function Stars() {
-  const [amountStars, setAmountStars] = useState(0);
+type StarsProps = {
+  idPost: string
+  starsAmount: number
+}
+
+export function Stars({ idPost, starsAmount }: StarsProps) {
+  const [amountStars, setAmountStars] = useState(starsAmount);
   const THEME = useTheme()
+
+  const { UpdateStars } = usePostsContext();
 
   function handleActiveStars(amountStar: number) {
     if(amountStars === amountStar && amountStar === 1){
       setAmountStars(0)  
+      UpdateStars(idPost, amountStar)
     } else {
       setAmountStars(amountStar)
+      UpdateStars(idPost, amountStar)
     }
   }
 
